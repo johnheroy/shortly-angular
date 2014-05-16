@@ -1,4 +1,5 @@
-angular.module('myApp', [])
+/* START SOLUTION */
+angular.module('shortly', ['ngAnimate', 'fx.animations', 'ngRoute'])
 .config(function($routeProvider) {
   $routeProvider.when('/', {
     controller: 'HomeCtrl',
@@ -13,19 +14,16 @@ angular.module('myApp', [])
   })
 })
 .factory('Shortly', function($http, $q) {
-  var url = "http://localhost:4567";
+  var url = "http://localhost:4568";
 
   return {
     all: function() {
-      var d = $q.defer();
-      $http.get('/links')
-      .success(function(data, status) {
-        d.resolve(data);
-      }).error(function(data, status) {
-        d.reject(data);
+      return $http({
+        method: 'GET',
+        url: url + '/links'
+      }).then(function (data) {
+        return data.data
       });
-
-      return d.promise;
     },
     create: function(url) {
       var d = $q.defer();
@@ -40,12 +38,24 @@ angular.module('myApp', [])
     }
   }
 })
-.controller('HomeCtrl', function($scope, Shortly) {
-  $scope.links = Shortly.all();
+.controller('HomeCtrl', function($scope, $timeout, Shortly) {
+  $scope.links = [];
+  $scope.loading = true;
+  $timeout(function () {}, 1000)
+    .then(function () {
+      return Shortly.all()
+    })
+    .then(function (links) {
+      angular.forEach(links, function(link) {
+        $scope.links.push(link);
+      });
+      $scope.loading = false;
+    });
+  $scope.name = 'Home';
 })
 .controller('ShortenCtrl', function($scope, $location, Shortly) {
-  $scope.shorten = function() {
-    if ($scope.link.text) {
+  $scope.shorten = function(valid) {
+    if (valid) {
       Shortly.create($scope.link.text)
         .then(function(data) {
           $scope.link = {};
@@ -54,3 +64,4 @@ angular.module('myApp', [])
     }
   }
 });
+/* END SOLUTION */

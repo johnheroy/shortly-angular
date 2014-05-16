@@ -1,0 +1,22 @@
+<!-- SART SOLUTION -->
+
+  <form
+    ng-class="{'error': shortlyForm.$invalid && shortlyForm.$dirty, 'clean': shortlyForm.$valid}"
+    name='shortlyForm'
+    ng-submit="shorten(shortlyForm.$valid)"
+    novalidate
+    >
+    <input name='add' type="url"
+          ng-model="link.text"
+          placeholder="Enter your url here" required
+    />
+
+    <button type="submit"
+          value="Shorten"
+          ng-disabled='shortlyForm.$invalid'>
+          submit
+    </button>
+
+  </form>
+
+<!-- END SOLUTION -->
