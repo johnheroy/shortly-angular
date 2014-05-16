@@ -1,23 +1,20 @@
 {
-  "name": "shortly-deploy",
+  "name": "shortly-angular",
   "version": "0.0.0",
-  "homepage": "https://github.com/Hendrixer/shortly-deploy",
+  "homepage": "https://github.com/Hendrixer/shortly-angular",
   "authors": [
     "Hendrixer <willscottmoss@gmail.com>"
   ],
   "license": "MIT",
-  "private": true,
   "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
-    "public/lib",
     "test",
     "tests"
   ],
   "dependencies": {
-    "angular": "~1.2.16",
     "angular-route": "~1.2.16",
-    "ng-Fx": "~0.4.0"
+    "angular": "~1.2.16"
   }
 }
