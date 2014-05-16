@@ -112,6 +112,12 @@ form input[type=text] {
   margin: 0 10px;
 }
 
+.clean {
+  background-color: #efe;
+  padding: 10px;
+  margin: 0 10px;
+}
+
 .creator {
   height: 50px;
 }

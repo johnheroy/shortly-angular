@@ -1,14 +1,24 @@
-<div class="links">
-  <div class="link" 
-      ng-repeat="link in links | orderBy:'created_at'">
-    <img src="/redirect_icon.png">
+<!-- START SOLUTION -->
+
+<div>
+  <h2>Your links</h2>
+  <a href="#/shorten"><button>add links</button></a>
+</div>
+<img ng-show='loading' src="spiffygif_46x46.gif">
+<input ng-show='!loading' ng-model='search' placeholder='filter' />
+<div ng-if='!loading' class="links">
+  <div class="link fx-fade-right-big fx-speed-1200 fx-easing-sine"
+      ng-repeat="link in links | filter:search |orderBy:'created_at'">
+    <img src="redirect_icon.png">
     <div class="info">
       <div class="visits">
         <span class="count">{{ link.visits }}</span>Visits
       </div>
       <div class="title">{{ link.title }}</div>
-      <div class="original">{{ link.url }}</div>         
-      <a href="http://localhost:3000/{{ link.code }}">{{ link.base_url }}/{{ link.code }}</a>       
+      <div class="original">{{ link.url }}</div>
+      <a href="http://localhost:4568/{{ link.code }}">{{ link.base_url }}/{{ link.code }}</a>
     </div>
   </div>
 </div>
+
+<!-- END SOLUTION -->
