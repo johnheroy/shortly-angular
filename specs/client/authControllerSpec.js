@@ -1,5 +1,5 @@
-describe('LinkController', function () {
-  var $scope, $rootScope, createController, Links, httpMock;
+describe('AuthController', function () {
+  var $scope, $rootScope, createController, Links;
 
   // using angular mocks, we can inject the injector
   // to retrieve our dependencies
@@ -8,7 +8,6 @@ describe('LinkController', function () {
 
     // mock out our dependencies
     $rootScope = $injector.get('$rootScope');
-    httpMock = $injector.get('$httpBackend');
     Links = $injector.get('Links');
     $scope = $rootScope.$new();
 
@@ -30,13 +29,5 @@ describe('LinkController', function () {
 
   it('should have a getLinks methood on the $scope', function () {
     expect($scope.getLinks).to.be.a('function');
-  });
-
-  it('should be able to get links and set to $scope.data.links', function () {
-    var links = [{},{},{}]
-    httpMock.expectGET("api/links").respond(links);
-    $scope.getLinks();
-    httpMock.flush();
-    expect($scope.data.links).to.eql(links);
   });
 });

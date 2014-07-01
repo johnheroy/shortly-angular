@@ -1,5 +1,5 @@
 describe('ShortenController', function () {
-  var $scope, $rootScope, $locationcreate, Controller, Links;
+  var $scope, $rootScope, $location, Controller, Links;
 
   // using angular mocks, we can inject the injector
   // to retrieve our dependencies
@@ -27,11 +27,24 @@ describe('ShortenController', function () {
 
   }));
 
+  afterEach(function() {
+    httpMock.verifyNoOutstandingExpectation();
+    httpMock.verifyNoOutstandingRequest();
+  });
+
   it('should have a data property on the $scope', function() {
     expect($scope.link).to.be.an('object');
   });
 
   it('should have a getLinks methood on the $scope', function () {
     expect($scope.addLink).to.be.a('function');
+  });
+
+  it('should be able to create new links', function () {
+    var links = [{},{},{}]
+    httpMock.expectPOST("api/links").respond(201, '');
+    $scope.getLinks();
+    httpMock.flush();
+    expect($scope.loading).to.be(false);
   });
 });
