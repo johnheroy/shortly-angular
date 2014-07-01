@@ -1,5 +1,5 @@
 {
-  "name": "shortly-angular-2",
+  "name": "shortly-angular",
   "version": "0.0.0",
   "authors": [],
   "license": "MIT",
@@ -8,8 +8,7 @@
     "**/.*",
     "node_modules",
     "bower_components",
-    "test",
-    "tests"
+    "client/lib"
   ],
   "dependencies": {
     "angular": "~1.2.18",
