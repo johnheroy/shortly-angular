@@ -36,7 +36,7 @@ describe('LinkController', function () {
 
   it('should be able to get links and set to $scope.data.links', function () {
     var links = [{},{},{}];
-    httpMock.expectGET("api/links").respond(links);
+    httpMock.expectGET("/api/links").respond(links);
     $scope.getLinks();
     httpMock.flush();
     expect($scope.data.links).to.eql(links);

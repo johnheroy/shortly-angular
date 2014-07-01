@@ -41,8 +41,8 @@ describe('ShortenController', function () {
   });
 
   it('should be able to create new links', function () {
-    httpMock.expectPOST("api/links").respond(201, '');
-    $scope.getLinks();
+    httpMock.expectPOST("/api/links").respond(201, '');
+    $scope.addLink();
     httpMock.flush();
     expect($scope.loading).to.be(false);
   });

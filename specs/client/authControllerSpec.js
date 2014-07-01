@@ -18,7 +18,7 @@ describe('AuthController', function () {
         $scope: $scope,
         Links: Links
       });
-    }
+    };
     createController();
 
   }));
