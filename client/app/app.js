@@ -7,14 +7,9 @@ angular.module('shortly', [
 ])
 .config(function($routeProvider, $httpProvider) {
   $routeProvider
-    .when('/', {
+    .when('/links', {
       templateUrl: 'app/links/links.html',
-      controller: 'LinksController',
-      resolve: {
-        links: function (Link) {
-          return Link.getLinks();
-        }
-      }
+      controller: 'LinksController'
     })
     .when('/shorten', {
       templateUrl: 'app/shorten/shorten.html',
@@ -29,12 +24,18 @@ angular.module('shortly', [
       controller: 'AuthController'
     })
     .otherwise({
-      redirectTo: '/'
+      redirectTo: '/links'
     });
 
+    // We add our $httpInterceptor into the array
+    // of interceptors. Think of it like middleware for your ajax calls
     $httpProvider.interceptors.push('AttatchTokens');
 })
 .factory('AttatchTokens', function ($window) {
+  // this is an $httpInterceptor
+  // its job is to stop all out going request
+  // then look in local storage and find the user's token
+  // then add it to the header so the server can validate the request
   var attach = {
     request: function (object) {
       var jwt = $window.localStorage.getItem('com.shortly');
@@ -48,12 +49,19 @@ angular.module('shortly', [
   return attach;
 })
 .run(function ($rootScope, $location, Auth) {
+  // here inside the run phase of angular, our services and controllers
+  // have just been registered and our app is ready
+  // however, we want to malke sure the user is authorized to be here
+  // we listen for when angular is trying to change routes
+  // when it does change routes, we then look for the token in localstorage
+  // and send that token to the server to see if it is a real user
+  // if it's not, we then redirect back to signin/signup
   $rootScope.$on('$routeChangeStart', function (evt, next, current) {
     Auth.isAuth()
       .then(function () {
         console.log('Signed in!');
       })
-      .fail(function () {
+      .catch(function () {
         if (next.$$route.controller && next.$$route.controller !== 'AuthController') {
           $location.path('/signin');
         }

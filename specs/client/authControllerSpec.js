@@ -16,6 +16,7 @@ describe('AuthController', function () {
 
     var $controller = $injector.get('$controller');
 
+    // used to create our AuthController for testing
     createController = function () {
       return $controller('AuthController', {
         $scope: $scope,

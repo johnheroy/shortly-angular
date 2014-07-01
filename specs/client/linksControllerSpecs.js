@@ -22,28 +22,22 @@ describe('LinkController', function () {
         Links: Links
       });
     };
-
-    createController();
   }));
 
-  afterEach(function() {
-    $httpBackend.verifyNoOutstandingExpectation();
-    $httpBackend.verifyNoOutstandingRequest();
-  });
-
   it('should have a data property on the $scope', function() {
+    createController();
     expect($scope.data).to.be.an('object');
   });
 
   it('should have a getLinks methood on the $scope', function () {
+    createController();
     expect($scope.getLinks).to.be.a('function');
   });
-
-  it('should be able to get links and set to $scope.data.links', function () {
-    var links = [{},{},{}];
-    $httpBackend.expectGET("/api/links").respond(links);
-    $scope.getLinks();
+  it('should be able to get all links', function () {
+    var mockLinks = [{},{},{}];
+    $httpBackend.expectGET("/api/links").respond(mockLinks);
+    createController();
     $httpBackend.flush();
-    expect($scope.data.links).to.eql(links);
+    expect($scope.data.links).to.eql(mockLinks);
   });
 });

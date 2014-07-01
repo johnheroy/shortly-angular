@@ -1,11 +1,11 @@
-<div>
-  <div id='signup'>
-    <h1>signup</h1>
-    <form name="signup" ng-submit='signup()'novalidate>
-      <input type='text' ng-model='user.username' required>
-      <input type="password" ng-model='user.password' required>
-      <button ng-disabled='signup.$invalid'>signup</button>
-    </form>
-  </div>
+<div id='signup'>
+
+  <h1>signup</h1>
+  <form name="signupForm" ng-submit='signup()'novalidate>
+    <input type='text' ng-model='user.username' required>
+    <input type="password" ng-model='user.password' required>
+    <button ng-disabled='signupForm.$invalid'>signup</button>
+  </form>
   <a href="#/signin">Already have an account? Signin ...</a>
+
 </div>
