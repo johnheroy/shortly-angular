@@ -40,7 +40,7 @@ describe('ShortenController', function () {
     expect($scope.addLink).to.be.a('function');
   });
 
-  it('should be able to create new links', function () {
+  it('should be able to create new links with addLink()', function () {
     $httpBackend.expectPOST("/api/links").respond(201, '');
     $scope.addLink();
     $httpBackend.flush();
