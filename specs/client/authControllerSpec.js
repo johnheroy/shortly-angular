@@ -42,6 +42,8 @@ describe('AuthController', function () {
   it('should store token in localStorage after signup', function() {
     // create a fake JWT for auth
     var token = 'sjj232hwjhr3urw90rof';
+
+    // make a 'fake' reques to the server, not really going to our server
     $httpBackend.expectPOST('/api/users/signup').respond({token: token});
     $scope.signup();
     $httpBackend.flush();
