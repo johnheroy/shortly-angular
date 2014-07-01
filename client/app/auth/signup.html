@@ -1,7 +1,7 @@
 <div>
   <div id='signup'>
-  <h1>signup</h1>
-    <form name="signup" ng-submit='form.signup()'novalidate>
+    <h1>signup</h1>
+    <form name="signup" ng-submit='signup()'novalidate>
       <input type='text' ng-model='user.username' required>
       <input type="password" ng-model='user.password' required>
       <button ng-disabled='signup.$invalid'>signup</button>

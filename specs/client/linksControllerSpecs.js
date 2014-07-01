@@ -1,7 +1,7 @@
 "use strict";
 
 describe('LinkController', function () {
-  var $scope, $rootScope, createController, Links, httpMock;
+  var $scope, $rootScope, createController, Links, $httpBackend;
 
   // using angular mocks, we can inject the injector
   // to retrieve our dependencies
@@ -10,7 +10,7 @@ describe('LinkController', function () {
 
     // mock out our dependencies
     $rootScope = $injector.get('$rootScope');
-    httpMock = $injector.get('$httpBackend');
+    $httpBackend = $injector.get('$httpBackend');
     Links = $injector.get('Links');
     $scope = $rootScope.$new();
 
@@ -26,6 +26,11 @@ describe('LinkController', function () {
     createController();
   }));
 
+  afterEach(function() {
+    $httpBackend.verifyNoOutstandingExpectation();
+    $httpBackend.verifyNoOutstandingRequest();
+  });
+
   it('should have a data property on the $scope', function() {
     expect($scope.data).to.be.an('object');
   });
@@ -36,9 +41,9 @@ describe('LinkController', function () {
 
   it('should be able to get links and set to $scope.data.links', function () {
     var links = [{},{},{}];
-    httpMock.expectGET("/api/links").respond(links);
+    $httpBackend.expectGET("/api/links").respond(links);
     $scope.getLinks();
-    httpMock.flush();
+    $httpBackend.flush();
     expect($scope.data.links).to.eql(links);
   });
 });

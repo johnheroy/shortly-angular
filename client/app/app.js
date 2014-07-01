@@ -34,15 +34,6 @@ angular.module('shortly', [
 
     $httpProvider.interceptors.push('AttatchTokens');
 })
-.run(function ($rootScope, $location, Auth) {
-  $rootScope.$on('$routeChangeStart', function (evt, next, current) {
-    if (!Auth.isAuth()) {
-      if (next.$$route.controller && next.$$route.controller !== 'AuthController') {
-        $location.path('/signin');
-      }
-    }
-  });
-})
 .factory('AttatchTokens', function ($window) {
   var attach = {
     request: function (object) {
@@ -55,4 +46,17 @@ angular.module('shortly', [
     }
   };
   return attach;
+})
+.run(function ($rootScope, $location, Auth) {
+  $rootScope.$on('$routeChangeStart', function (evt, next, current) {
+    Auth.isAuth()
+      .then(function () {
+        console.log('Signed in!');
+      })
+      .fail(function () {
+        if (next.$$route.controller && next.$$route.controller !== 'AuthController') {
+          $location.path('/signin');
+        }
+      });
+  });
 });

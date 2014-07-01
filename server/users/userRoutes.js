@@ -5,4 +5,5 @@ module.exports = function (app) {
   // app === userRouter injected from middlware.js
   app.post('/signin', userController.signin);
   app.post('/signup', userController.signup);
+  app.get('/singedin', userController.checkAuth);
 };

@@ -48,7 +48,10 @@ angular.module('shortly.services', [])
   };
 
   var isAuth = function () {
-    return  $window.localStorage.getItem('com.shortly');
+    return $http({
+      method: 'GET',
+      url: '/signedin'
+    });
   };
 
   var signout = function () {
