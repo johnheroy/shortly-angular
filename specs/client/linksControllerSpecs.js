@@ -1,3 +1,5 @@
+"use strict";
+
 describe('LinkController', function () {
   var $scope, $rootScope, createController, Links, httpMock;
 
@@ -19,7 +21,7 @@ describe('LinkController', function () {
         $scope: $scope,
         Links: Links
       });
-    }
+    };
     createController();
 
   }));
@@ -33,7 +35,7 @@ describe('LinkController', function () {
   });
 
   it('should be able to get links and set to $scope.data.links', function () {
-    var links = [{},{},{}]
+    var links = [{},{},{}];
     httpMock.expectGET("api/links").respond(links);
     $scope.getLinks();
     httpMock.flush();

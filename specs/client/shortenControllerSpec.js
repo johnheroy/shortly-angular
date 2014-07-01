@@ -1,5 +1,5 @@
 describe('ShortenController', function () {
-  var $scope, $rootScope, $location, Controller, Links;
+  var $scope, $rootScope, $location, createController, httpMock, Links;
 
   // using angular mocks, we can inject the injector
   // to retrieve our dependencies
@@ -8,7 +8,7 @@ describe('ShortenController', function () {
 
     // mock out our dependencies
     $rootScope = $injector.get('$rootScope');
-
+    httpMock = $injector.get('$httpBackend');
     Links = $injector.get('Links');
     $location = $injector.get('$location');
 
@@ -22,7 +22,7 @@ describe('ShortenController', function () {
         Links: Links,
         $location: $location
       });
-    }
+    };
     createController();
 
   }));
@@ -41,7 +41,6 @@ describe('ShortenController', function () {
   });
 
   it('should be able to create new links', function () {
-    var links = [{},{},{}]
     httpMock.expectPOST("api/links").respond(201, '');
     $scope.getLinks();
     httpMock.flush();
