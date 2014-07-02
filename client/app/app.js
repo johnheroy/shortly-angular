@@ -32,9 +32,9 @@ angular.module('shortly', [
 
     // We add our $httpInterceptor into the array
     // of interceptors. Think of it like middleware for your ajax calls
-    $httpProvider.interceptors.push('AttatchTokens');
+    $httpProvider.interceptors.push('AttachTokens');
 })
-.factory('AttatchTokens', function ($window) {
+.factory('AttachTokens', function ($window) {
   // this is an $httpInterceptor
   // its job is to stop all out going request
   // then look in local storage and find the user's token
