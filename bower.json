@@ -1,20 +1,17 @@
 {
   "name": "shortly-angular",
   "version": "0.0.0",
-  "homepage": "https://github.com/Hendrixer/shortly-angular",
-  "authors": [
-    "Hendrixer <willscottmoss@gmail.com>"
-  ],
+  "authors": [],
   "license": "MIT",
   "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
-    "test",
-    "tests"
+    "client/lib"
   ],
   "dependencies": {
-    "angular-route": "~1.2.16",
-    "angular": "~1.2.16"
+    "angular": "~1.2.18",
+    "angular-route": "~1.2.18",
+    "angular-mocks": "~1.2.18"
   }
 }
