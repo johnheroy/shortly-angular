@@ -69,3 +69,4 @@ gulp.task('watch', function () {
 });
 
 gulp.task('default', ['lint', 'live', 'serve', 'watch']);
+gulp.task('test', ['lint', 'karma']);
