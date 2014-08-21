@@ -5,6 +5,7 @@ machine:
     DOWNSTREAM: hackreactor/shortly-angular
 dependencies:
   pre:
+    - npm install -g bower
     - npm install -g hackreactor-labs/problemify
     - git clone git@github.com:hackreactor-labs/scripts.git ../scripts
 test:
