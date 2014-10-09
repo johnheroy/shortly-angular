@@ -109,6 +109,10 @@ input[type=url] {
   display: inline
 }
 
+input[type=url]:focus {
+  outline: none;
+}
+
 
 .error {
   border: red solid 4px;
@@ -141,3 +145,4 @@ input[type=url] {
 .creator .message {
   clear: both;
 }
+

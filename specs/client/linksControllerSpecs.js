@@ -29,7 +29,7 @@ describe('LinkController', function () {
     expect($scope.data).to.be.an('object');
   });
 
-  it('should have a getLinks methood on the $scope', function () {
+  it('should have a getLinks method on the $scope', function () {
     createController();
     expect($scope.getLinks).to.be.a('function');
   });
