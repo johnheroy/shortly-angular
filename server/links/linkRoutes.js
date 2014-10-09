@@ -1,4 +1,4 @@
-var linksController = require('./linksController.js');
+var linksController = require('./linkController.js');
 
 module.exports = function (app) {
   // app === linkRouter injected from middleware.js
