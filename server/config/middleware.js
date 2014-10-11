@@ -22,7 +22,7 @@ module.exports = function (app, express) {
   app.use(helpers.errorLogger);
   app.use(helpers.errorHandler);
 
-  app.use('/*', linkRouter);
+  app.use('/', linkRouter);
 
   // app.use('/*', function(req, res){
   //   res.redirect('/#/links');
