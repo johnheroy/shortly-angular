@@ -3,13 +3,20 @@
   <head>
     <meta charset="utf-8" />
     <title>Shortly</title>
+    <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="styles/style.css" />
   </head>
   <body>
-    <h1>Shortly</h1>
+  <div class="container">
+    <div class="row">
+      <h1>Shortly</h1>
+      <a href="/#/shorten">Shorten Links!</a> |
+      <a href="/#/links">Your Links!</a>
+      <!-- the ng-view directive is where our templates will be loaded into when naviagted to -->
 
-    <!-- the ng-view directive is where our templates will be loaded into when naviagted to -->
-    <div ng-view></div>
+          <div ng-view></div>
+        </div>
+    </div>
 
     <script src="lib/angular/angular.js"></script>
     <script src="lib/angular-route/angular-route.js"></script>

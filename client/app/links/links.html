@@ -1,3 +1,19 @@
 <div id='container' ng-controller="LinksController">
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>URL</th>
+      <th>shortcode</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="link in data.links">
+      <td>{{ link.title }}</td>
+      <td>{{ link.url }}</td>
+      <td>{{ link.code }}</td>
+    </tr>
+  </tbody>
+</table>
 
 </div>

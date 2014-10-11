@@ -22,7 +22,9 @@ angular.module('shortly', [
     .when('/shorten', {
       templateUrl: 'app/shorten/shorten.html',
       controller: 'ShortenController'
-    })
+    }).otherwise({
+      redirectTo: '/links' //This exists in real code
+    });
     // Your code here
 
     // We add our $httpInterceptor into the array
