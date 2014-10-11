@@ -146,3 +146,14 @@ input[type=url]:focus {
   clear: both;
 }
 
+.shorten-form input {
+  max-width: 400px;
+}
+
+.shorten-form input.ng-invalid.ng-dirty {
+  border: 2px solid red;
+}
+
+.shorten-form input.ng-valid.ng-dirty {
+  border: 2px solid green;
+}

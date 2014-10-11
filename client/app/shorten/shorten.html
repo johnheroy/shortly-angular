@@ -1,8 +1,11 @@
 <div id='container' ng-controller="ShortenController">
-
-  <input type="text" name="input" placeholder="Type a link here" ng-model="link.url" />
-  <button ng-click="addLink()">Submit</button>
-
+  <form novalidate class="shorten-form form-group" name="form">
+    <input class="form-control" type="url" name="input" placeholder="Type a link here" ng-model="link.url" required />
+    <button ng-click="addLink()">Submit</button>
+    <br>
+    <small ng-show="form.input.$dirty && form.input.$invalid">Please enter a valid url</small>
+    <small ng-show="form.input.$dirty && form.input.$valid">Thanks! We will shortly shorten your url</small>
+  </form>
 </div>
 
 
