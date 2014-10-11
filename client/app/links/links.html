@@ -5,13 +5,15 @@
       <th>Title</th>
       <th>URL</th>
       <th>shortcode</th>
+      <th># visits</th>
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="link in data.links">
+    <tr ng-repeat="link in data.links | orderBy: '-visits'">
       <td>{{ link.title }}</td>
       <td>{{ link.url }}</td>
       <td>{{ link.code }}</td>
+      <td>{{ link.visits }}</td>
     </tr>
   </tbody>
 </table>
