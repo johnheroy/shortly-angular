@@ -3,32 +3,71 @@ angular.module('shortly', [
   'shortly.links',
   'shortly.shorten',
   'shortly.auth',
-  'ngRoute'
+  'ui.router',
+  'ngFx'
 ])
-.config(function($routeProvider, $httpProvider) {
-  $routeProvider
-    .when('/signin', {
-      templateUrl: 'app/auth/signin.html',
-      controller: 'AuthController'
+.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
+  // $routeProvider
+  //   .when('/signin', {
+  //     templateUrl: 'app/auth/signin.html',
+  //     controller: 'AuthController'
+  //   })
+  //   .when('/signup', {
+  //     templateUrl: 'app/auth/signup.html',
+  //     controller: 'AuthController'
+  //   })
+  //   // Your code here
+  //   /* START SOLUTION */
+  //   .when('/links', {
+  //     templateUrl: 'app/links/links.html',
+  //     controller: 'LinksController',
+  //     authenticate: true,
+  //     resolve: {
+  //       links: function(Links) {
+  //         return Links.getAll();
+  //       }
+  //     }
+  //   })
+  //   .when('/shorten', {
+  //     templateUrl: 'app/shorten/shorten.html',
+  //     controller: 'ShortenController',
+  //     authenticate: true,
+  //   })
+  //   .otherwise({
+  //     redirectTo: '/links'
+  //   });
+
+  $urlRouterProvider.otherwise('/links/child');
+
+  $stateProvider
+    .state('signup', {
+      url: '/signup',
+      controller: 'AuthController',
+      templateUrl: 'app/auth/signup'
     })
-    .when('/signup', {
-      templateUrl: 'app/auth/signup.html',
-      controller: 'AuthController'
+    .state('signin', {
+      url: '/signin',
+      controller: 'AuthController',
+      templateUrl: 'app/auth/signin'
     })
-    // Your code here
-    /* START SOLUTION */
-    .when('/links', {
-      templateUrl: 'app/links/links.html',
+    .state('links', {
+      url: '/links',
       controller: 'LinksController',
-      authenticate: true,
+      templateUrl: 'app/links/links.html',
+      resolve: {
+        links: function(Links) {
+          return Links.getAll();
+        }
+      }
     })
-    .when('/shorten', {
-      templateUrl: 'app/shorten/shorten.html',
+    .state('links.child', {
+      url: '/child',
+      template: '<h1>CHILD</h1>'
+    })
+    .state('shorten', {
+      url: '/shorten',
       controller: 'ShortenController',
-      authenticate: true,
-    })
-    .otherwise({
-      redirectTo: '/links'
+      templateUrl: 'app/shorten/shorten.html'
     });
     /* END SOLUTION */
 
