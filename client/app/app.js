@@ -3,6 +3,7 @@ angular.module('shortly', [
   'shortly.links',
   'shortly.shorten',
   'shortly.auth',
+<<<<<<< HEAD
   'ngRoute'
 ])
 .config(function($routeProvider, $httpProvider) {
@@ -26,6 +27,75 @@ angular.module('shortly', [
       redirectTo: '/links' //This exists in real code
     });
     // Your code here
+=======
+  'ui.router',
+  'ngFx'
+])
+.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
+  // $routeProvider
+  //   .when('/signin', {
+  //     templateUrl: 'app/auth/signin.html',
+  //     controller: 'AuthController'
+  //   })
+  //   .when('/signup', {
+  //     templateUrl: 'app/auth/signup.html',
+  //     controller: 'AuthController'
+  //   })
+  //   // Your code here
+  //   /* START SOLUTION */
+  //   .when('/links', {
+  //     templateUrl: 'app/links/links.html',
+  //     controller: 'LinksController',
+  //     authenticate: true,
+  //     resolve: {
+  //       links: function(Links) {
+  //         return Links.getAll();
+  //       }
+  //     }
+  //   })
+  //   .when('/shorten', {
+  //     templateUrl: 'app/shorten/shorten.html',
+  //     controller: 'ShortenController',
+  //     authenticate: true,
+  //   })
+  //   .otherwise({
+  //     redirectTo: '/links'
+  //   });
+
+  $urlRouterProvider.otherwise('/links/child');
+
+  $stateProvider
+    .state('signup', {
+      url: '/signup',
+      controller: 'AuthController',
+      templateUrl: 'app/auth/signup'
+    })
+    .state('signin', {
+      url: '/signin',
+      controller: 'AuthController',
+      templateUrl: 'app/auth/signin'
+    })
+    .state('links', {
+      url: '/links',
+      controller: 'LinksController',
+      templateUrl: 'app/links/links.html',
+      resolve: {
+        links: function(Links) {
+          return Links.getAll();
+        }
+      }
+    })
+    .state('links.child', {
+      url: '/child',
+      template: '<h1>CHILD</h1>'
+    })
+    .state('shorten', {
+      url: '/shorten',
+      controller: 'ShortenController',
+      templateUrl: 'app/shorten/shorten.html'
+    });
+    /* END SOLUTION */
+>>>>>>> fda0fbf86579d2cb980fc9d673715eb7607a3b7c
 
     // We add our $httpInterceptor into the array
     // of interceptors. Think of it like middleware for your ajax calls

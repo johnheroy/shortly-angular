@@ -12,6 +12,11 @@
   "dependencies": {
     "angular": "~1.2.18",
     "angular-route": "~1.2.18",
+<<<<<<< HEAD
     "angular-mocks": "~1.2.18"
+=======
+    "angular-mocks": "~1.2.18",
+    "angular-ui-router": "~0.2.11"
+>>>>>>> fda0fbf86579d2cb980fc9d673715eb7607a3b7c
   }
 }

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div id='container' ng-controller="ShortenController">
   <form novalidate class="shorten-form form-group" name="form">
     <input class="form-control" type="url" name="input" placeholder="Type a link here" ng-model="link.url" required />
@@ -6,6 +7,40 @@
     <small ng-show="form.input.$dirty && form.input.$invalid">Please enter a valid url</small>
     <small ng-show="form.input.$dirty && form.input.$valid">Thanks! We will shortly shorten your url</small>
   </form>
+=======
+<div id='container'>
+<!-- Your code here -->
+<!-- START SOLUTION -->
+  <nav class="navigation">
+    <ul>
+      <li>
+          <a href="#/links">Links</a>
+      </li>
+       <li>
+          <a class='selected' href="#/shorten">Shorten</a>
+      </li>
+    </ul>
+  </nav>
+  <div class="creator">
+    <form name='shortlyForm' ng-submit="addLink()" novalidate>
+      <input name='link' type="url"
+        ng-model="link.url"
+        placeholder="Enter your url here" required
+        ng-class="{'error': shortlyForm.$invalid && shortlyForm.$dirty}"/>
+
+      <button type="submit" value="Shorten" ng-disabled='shortlyForm.$invalid'>
+        add
+      </button>
+    </form>
+    <div ng-if='shortlyForm.link.$error.required && shortlyForm.$dirty' class="message">
+      <h2>Url required</h2>
+    </div>
+    <div ng-show='shortlyForm.link.$error.url && shortlyForm.$dirty' class="message">
+      <h2>Not a valid url</h2>
+    </div>
+  </div>
+  <!-- END SOLUTION -->
+>>>>>>> fda0fbf86579d2cb980fc9d673715eb7607a3b7c
 </div>
 
 

@@ -146,6 +146,7 @@ input[type=url]:focus {
   clear: both;
 }
 
+<<<<<<< HEAD
 .shorten-form input {
   max-width: 400px;
 }
@@ -157,3 +158,5 @@ input[type=url]:focus {
 .shorten-form input.ng-valid.ng-dirty {
   border: 2px solid green;
 }
+=======
+>>>>>>> fda0fbf86579d2cb980fc9d673715eb7607a3b7c

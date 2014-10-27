@@ -7,7 +7,10 @@ module.exports = function (app) {
   // like line 16 below. That code will actually be the shortned url
   // so the real URL will be pre fetched from mongo and attached to
   // req.navLink before it reaches line 16.
+<<<<<<< HEAD
 
+=======
+>>>>>>> fda0fbf86579d2cb980fc9d673715eb7607a3b7c
   app.param('code', linksController.findUrl);
 
   app.route('/')

@@ -31,7 +31,11 @@
     "mocha": "^1.20.1"
   },
   "dependencies": {
+<<<<<<< HEAD
     "bcrypt-nodejs": "0.0.3",
+=======
+    "bcrypt": "^0.8.0",
+>>>>>>> fda0fbf86579d2cb980fc9d673715eb7607a3b7c
     "body-parser": "^1.4.3",
     "express": "^4.4.5",
     "jwt-simple": "^0.2.0",

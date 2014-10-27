@@ -30,7 +30,11 @@ gulp.task('start', ['serve'],function () {
   });
 });
 
+<<<<<<< HEAD
 gulp.task('test', shell.task([
+=======
+gulp.task('karma', shell.task([
+>>>>>>> fda0fbf86579d2cb980fc9d673715eb7607a3b7c
   'karma start'
 ]));
 

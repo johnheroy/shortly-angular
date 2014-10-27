@@ -36,7 +36,11 @@ module.exports = {
         newUser;
 
     var findOne = Q.nbind(User.findOne, User);
+<<<<<<< HEAD
 
+=======
+    console.log(username, password);
+>>>>>>> fda0fbf86579d2cb980fc9d673715eb7607a3b7c
     // check to see if user already exists
     findOne({username: username})
       .then(function(user) {
